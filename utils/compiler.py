@@ -158,11 +158,7 @@ class ModelCompiler(object):
 
         final_save_images_path = '%s/%s/ep{%s}.png' % (self.save_images_dir, self.save_ckpt_name, epoch)
         plt.savefig(final_save_images_path)
-<<<<<<< HEAD
         plt.close('all')
-=======
-        plt.close()
->>>>>>> 713d115cea50f390a1b6732d8e4e26662ee86a3c
 
     def validate(self, epoch_done, is_save_image=True):
         pass
