@@ -256,3 +256,26 @@ class ModelCompiler(object):
                 log_str += "=> " + log_template["time-remaining"] % (rot_hr, rot_min)
 
             tqdm.write(log_str)
+
+
+    def print_progress_bar(self, iteration, total, prefix='', suffix='', decimals=1, length=50, fill='=', forward_sample='>'):
+        """
+        Call in a loop to create terminal progress bar
+        @params:
+            iteration   - Required  : current iteration (Int)
+            total       - Required  : total iterations (Int)
+            prefix      - Optional  : prefix string (Str)
+            suffix      - Optional  : suffix string (Str)
+            decimals    - Optional  : positive number of decimals in percent complete (Int)
+            length      - Optional  : character length of bar (Int)
+            fill        - Optional  : bar fill character (Str)
+        """
+        percent = ("{0:." + str(decimals) + "f}").format(int(100 * (iteration / float(total))))
+        filled_length = int(length * iteration // total)
+        forward_symbol = forward_sample if iteration < total else ''
+        bar = fill * filled_length + forward_symbol + '-' * (length - filled_length)
+        print('\r %s |%s| %s%% %s' % (prefix, bar, percent, suffix), end='\r')
+        # Print New Line on Complete
+        if iteration == total:
+            print()
+            print()
